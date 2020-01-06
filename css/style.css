@@ -1,0 +1,50 @@
+.container{
+    width: 640px;
+    margin: 0 auto;
+}
+
+.container .camera{
+    position: relative;
+}
+.container .camera #snap{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 60px;
+    background-color: #378648a6;
+    border-radius: 40px;
+    cursor: pointer;
+    border: 2px solid green;
+    width: 60px;
+}
+.container .camera #snap #red-point{
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    display: block;
+    border-radius: 50px;
+    margin: 0 auto;
+}
+
+.container .images-list{
+    display: flex;
+    justify-content: space-between;
+
+}
+.container .images-list img{
+    max-width: 100%;
+}
+
+.container .images-list .img-wrapper{
+    padding: 5px;
+}
+
+.container .images-list .img-wrapper:first-child{
+    padding-left: 0;
+}
+
+.container .images-list .img-wrapper:last-child{
+    padding-right: 0;
+}

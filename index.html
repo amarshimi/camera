@@ -5,71 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
     <title>Camera Test</title>
 </head>
 
 <body>
 
 
-    <video id="video" width="640" height="480" autoplay></video>
-    <button id="snap">Snap Photo</button>
-    <canvas id="canvas" width="640" height="480"></canvas>
-    <image id="theimage"></image>
+    <div class="container">
+
+        <div class="camera">
+            <video id="video" width="640" height="480" autoplay></video>
+            <button id="snap">
+                <i id="red-point"></i>
+            </button>
+        </div>
+
+        <div class="images-list">
+
+            <div class="img-wrapper"><img src="icons/photo-placehoder.png" /> </div>
+            <div class="img-wrapper"><img src="icons/photo-placehoder.png" /> </div>
+            <div class="img-wrapper"><img src="icons/photo-placehoder.png" /> </div>
+            <div class="img-wrapper"><img src="icons/photo-placehoder.png" /> </div>
+            <div class="img-wrapper"><img src="icons/photo-placehoder.png" /> </div>
+        </div>
+
+        <canvas id="canvas" width="640" height="480"></canvas>
+        <image id="theimage"></image>
+
+    </div>
+
+
+
+
+
     <script src="http://hongru.github.io/proj/canvas2image/canvas2image.js"></script>
-
-
-    <script>
-        // Grab elements, create settings, etc.
-        var video = document.getElementById('video');
-
-        // Get access to the camera!
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            // Not adding `{ audio: true }` since we only want video now
-            navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
-                //video.src = window.URL.createObjectURL(stream);
-                video.srcObject = stream;
-                video.play();
-            });
-        }
-
-        /* Legacy code below: getUserMedia
-        else if(navigator.getUserMedia) { // Standard
-            navigator.getUserMedia({ video: true }, function(stream) {
-                video.src = stream;
-                video.play();
-            }, errBack);
-        } else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
-            navigator.webkitGetUserMedia({ video: true }, function(stream){
-                video.src = window.webkitURL.createObjectURL(stream);
-                video.play();
-            }, errBack);
-        } else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
-            navigator.mozGetUserMedia({ video: true }, function(stream){
-                video.srcObject = stream;
-                video.play();
-            }, errBack);
-        }
-        */
-
-
-        // Elements for taking the snapshot
-        var canvas = document.getElementById('canvas');
-        var context = canvas.getContext('2d');
-        var video = document.getElementById('video');
-
-        // Trigger photo take
-        document.getElementById("snap").addEventListener("click", function () {
-            context.drawImage(video, 0, 0, 640, 480);
-            to_image();
-        });
-
-        function to_image(){
-                var canvas = document.getElementById("canvas");
-                document.getElementById("theimage").src = canvas.toDataURL();
-               // Canvas2Image.saveAsPNG(canvas);
-            }
-
-    </script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
